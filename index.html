@@ -8,95 +8,123 @@
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/css/bootstrap.min.css"
         integrity="sha384-TX8t27EcRE3e/ihU7zmQxVncDAy5uIKz4rEkgIXeMed4M0jlfIDPvg6uqKI2xXr2" crossorigin="anonymous">
     <link rel="stylesheet" href="./assets/css/style.css">
+    <script src="https://kit.fontawesome.com/8e924d1ef5.js" crossorigin="anonymous"></script>
     <title>Weather Dashboard</title>
 </head>
 
-<body>
-    <section class="vh-100" style="background-color: #4B515D;">
-        <div class="container py-5 h-100">
+<body style="background-color: #4B515D">
+    <section class="vh-100">
+        <div class="container py-5 h-100 col-sm-10">
             <div class="row d-flex justify-content-center align-items-center h-100">
-                <div class="col-md-8 col-lg-6 col-xl-4">
-                    <div class="card w-100 h-100 col" style="color: #4B515D; border-radius: 35px;">
-                        <div class="card-body p-4">
+                <div class="col-md-8 col-lg-6 col-xl-4 ">
+                    <div class="card w-100 h-100 col background-color-main-card"
+                        style="color: #4B515D; border-radius: 35px;">
+                        <div class="card-body p-4 ">
                             <div class="d-flex align-items-center justify-content-center min-vh">
-                                <input id="search-box" value="Type in a city!" class="flex-grow-1 col-8"></input>
-                                <button class="col" id="btn-search">Search</button>
+                                <form>
+                                    <input id="search-box" placeholder="Type in a city!"
+                                        class="flex-grow-1 col-8 d-flex m-auto"></input>
+                                    <button class="col" id="btn-search">Search</button>
+                                </form>
                             </div>
-                            <div class="">
-                                <ul id="previous-searches"></ul>
-                                <li>previous searches</li>
+                            <div class="m-auto">
+                                <ul id="previous-searches">
+                                    <!-- <li class="d-flex m-auto"></li> -->
+                                </ul>
                             </div>
                         </div>
                     </div>
                 </div>
-                <div class="card w-50 h-50 " style="color: #4B515D; border-radius: 35px;">
-                    <div class="card-body p-4">
-                        <div class="d-flex">
-                            <h6 class="flex-grow-1 col-8">CITY NAME</h6>
+                <div class="card w-50 h-50 background-color-main-card" style="color: #4B515D; border-radius: 35px;">
+                    <div class="card-body p-4 ">
+                        <div class=" d-flex">
+                            <h6 id="city-name" class="flex-grow-1 col-8">City Name</h6>
                         </div>
                         <div class="d-flex flex-column text-center mt-5 mb-4">
-                            <h6 class="display-4 mb-0 font-weight-bold" style="color: #1C2331;"> TEMP </h6>
-                            <span class="small" style="color: #868B94">Stormy</span>
+                            <h6 id="temperature" class="display-4 mb-0 font-weight-bold" style="color: #1C2331;">
+                                Search a city! </h6>
+                            <span id="weather-description" class="small text-muted" style="color: #868B94">Weather
+                                Description</span>
                         </div>
 
                         <div class="d-flex align-items-center">
                             <div class="flex-grow-1" style="font-size: 1rem;">
                                 <div>
-                                    <i class="fas fa-wind fa-fw" style="color: #868B94;"></i> <span
-                                        class="ms-1">windspeed</span>
+                                    <i class="fas fa-wind fa-fw" style="color: #868B94;"></i> <span class="ms-1"
+                                        id="windspeed">Windspeed: </span>
                                 </div>
                                 <div>
-                                    <i class="fas fa-tint fa-fw" style="color: #868B94;"></i> <span
-                                        class="ms-1">humidity</span>
+                                    <i class="fas fa-tint fa-fw" style="color: #868B94;"></i> <span class="ms-1"
+                                        id="humidity">Humidity: </span>
                                 </div>
                                 <div>
-                                    <i class="fas fa-sun fa-fw" style="color: #868B94;"></i> <span class="ms-1">UV
-                                        INDEX</span>
+                                    <i class="fas fa-sun fa-fw" style="color: #868B94;"></i> <span class="ms-1"
+                                        id="uv-index">UV Index: </span>
                                 </div>
                             </div>
                             <div>
-                                <img src="https://mdbcdn.b-cdn.net/img/Photos/new-templates/bootstrap-weather/ilu1.webp"
-                                    width="100px">
+                                <img id="icon-picture" src="https://openweathermap.org/img/wn/01n@4x.png">
                             </div>
                         </div>
                     </div>
                 </div>
                 <!-- VVVVVV CARDS FOR FIVE DAY FORECAST VVVVVV-->
-                <div class="card-group">
-                    <div class="card">
-                        <div class="card-body">
-                            <h5 class="card-title">Card title</h5>
-                            <p class="card-text">This is a wider card with supporting text below as a natural lead-in to
-                                additional content. This content is a little bit longer.</p>
+                <div class="container card-group col-md-8 col-lg-10">
+                    <div class="row background-color-main-card">
+                        <div class="col-lg card background-color-main-card">
+                            <div data-day="1" class="card-body">
+                                <h4 class="day-name">Day</h4>
+                                <h5 class="card-title day-temp">0.00&deg;</h5>
+                                <h6 class="day-windspeed">Windspeed: </h6>
+                                <h6 class="day-humidity">Humidity: </h6>
+                                <h6 class="day-uv-index">UV Index: </h6>
+                                <img class="d-flex justify-content-center m-auto icon-picture"
+                                    src="https://openweathermap.org/img/wn/01n@2x.png">
+                            </div>
                         </div>
-                    </div>
-                    <div class="card">
-                        <div class="card-body">
-                            <h5 class="card-title">Card title</h5>
-                            <p class="card-text">This card has supporting text below as a natural lead-in to additional
-                                content.</p>
+                        <div class="card col-lg background-color-main-card" data-day="2">
+                            <div class="card-body background-color-main-card">
+                                <h4 class="day-name">Day</h4>
+                                <h5 class="card-title day-temp">0.00&deg;</h5>
+                                <h6 class="day-windspeed">Windspeed: </h6>
+                                <h6 class="day-humidity">Humidity: </h6>
+                                <h6 class="day-uv-index">UV Index: </h6>
+                                <img class="d-flex justify-content-center m-auto icon-picture"
+                                    src="https://openweathermap.org/img/wn/01n@2x.png">
+                            </div>
                         </div>
-                    </div>
-                    <div class="card">
-                        <div class="card-body">
-                            <h5 class="card-title">Card title</h5>
-                            <p class="card-text">This is a wider card with supporting text below as a natural lead-in to
-                                additional content. This card has even longer content than the first to show that equal
-                                height action.</p>
+                        <div data-day="3" class="background-color-main-card card col-lg">
+                            <div class="card-body background-color-main-card">
+                                <h4 class="day-name">Day</h4>
+                                <h5 class="card-title day-temp">0.00&deg;</h5>
+                                <h6 class="day-windspeed">Windspeed: </h6>
+                                <h6 class="day-humidity">Humidity: </h6>
+                                <h6 class="day-uv-index">UV Index: </h6>
+                                <img class="d-flex justify-content-center m-auto icon-picture"
+                                    src="https://openweathermap.org/img/wn/01n@2x.png">
+                            </div>
                         </div>
-                    </div>
-                    <div class="card">
-                        <div class="card-body">
-                            <h5 class="card-title">Card title</h5>
-                            <p class="card-text">This is a wider card with supporting text below as a natural lead-in to
-                                additional content. This content is a little bit longer.</p>
+                        <div data-day="4" class="background-color-main-card card col-lg">
+                            <div class="card-body background-color-main-card">
+                                <h4 class="day-name">Day</h4>
+                                <h5 class="card-title day-temp">0.00&deg;</h5>
+                                <h6 class="day-windspeed">Windspeed: </h6>
+                                <h6 class="day-humidity">Humidity: </h6>
+                                <h6 class="day-uv-index">UV Index: </h6>
+                                <img class="d-flex justify-content-center m-auto icon-picture"
+                                    src="https://openweathermap.org/img/wn/01n@2x.png">
+                            </div>
                         </div>
-                    </div>
-                    <div class="card">
-                        <div class="card-body">
-                            <h5 class="card-title">Card title</h5>
-                            <p class="card-text">This is a wider card with supporting text below as a natural lead-in to
-                                additional content. This content is a little bit longer.</p>
+                        <div data-day="5" class="background-color-main-card card col-lg">
+                            <div class="card-body background-color-main-card">
+                                <h4 class="day-name">Day</h4>
+                                <h5 class="card-title day-temp">0.00&deg;</h5>
+                                <h6 class="day-windspeed">Windspeed: </h6>
+                                <h6 class="day-humidity">Humidity: </h6>
+                                <h6 class="day-uv-index">UV Index: </h6>
+                                <img class="d-flex justify-content-center m-auto icon-picture"
+                                    src="https://openweathermap.org/img/wn/01n@2x.png">
+                            </div>
                         </div>
                     </div>
                 </div>
