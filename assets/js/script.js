@@ -23,7 +23,7 @@ let weather = {
     apiKey: "337d80042405d94ae5667a58a7159148",
     fetchLocation: function (typedLocation) {
         fetch(
-            "http://api.openweathermap.org/geo/1.0/direct?q=" + typedLocation + "&appid=337d80042405d94ae5667a58a7159148"
+            "https://api.openweathermap.org/geo/1.0/direct?q=" + typedLocation + "&appid=337d80042405d94ae5667a58a7159148"
         ).then(location => location.json()).then(location => { return location });
     },
     fetchWeather: function (lat, lon) {
@@ -35,7 +35,7 @@ let weather = {
 };
 
 async function getWeatherFromCityName(typedLocation) {
-    var locations = await fetch("http://api.openweathermap.org/geo/1.0/direct?q=" + typedLocation + "&appid=337d80042405d94ae5667a58a7159148")
+    var locations = await fetch("https://api.openweathermap.org/geo/1.0/direct?q=" + typedLocation + "&appid=337d80042405d94ae5667a58a7159148")
         .then(response => response.json());
     let location = locations[0];
     let weather = await fetch("https://api.openweathermap.org/data/3.0/onecall?lat=" + location.lat + "&lon=" + location.lon + "&exclude=hourly,minutely&units=imperial&appid=337d80042405d94ae5667a58a7159148")
@@ -45,7 +45,7 @@ async function getWeatherFromCityName(typedLocation) {
     var humidity = weather.current.humidity;
     var uvIndex = weather.current.uvi;
     var icon = weather.current.weather[0].icon;
-    var iconUrl = "http://openweathermap.org/img/wn/" + icon + "@4x.png";
+    var iconUrl = "https://openweathermap.org/img/wn/" + icon + "@4x.png";
     var windspeed = weather.current.wind_speed;
     var description = weather.current.weather[0].description;
     temperatureEl.innerHTML = temp + "&#xb0 F";
@@ -61,7 +61,7 @@ async function getWeatherFromCityName(typedLocation) {
 
 
 async function clickPreviousSearch(clickedSearch) {
-    var locations = await fetch("http://api.openweathermap.org/geo/1.0/direct?q=" + clickedSearch.target.innerHTML + "&appid=337d80042405d94ae5667a58a7159148")
+    var locations = await fetch("https://api.openweathermap.org/geo/1.0/direct?q=" + clickedSearch.target.innerHTML + "&appid=337d80042405d94ae5667a58a7159148")
         .then(response => response.json());
     let location = locations[0];
     let weather = await fetch("https://api.openweathermap.org/data/3.0/onecall?lat=" + location.lat + "&lon=" + location.lon + "&exclude=hourly,minutely&units=imperial&appid=337d80042405d94ae5667a58a7159148")
@@ -71,7 +71,7 @@ async function clickPreviousSearch(clickedSearch) {
     var humidity = weather.current.humidity;
     var uvIndex = weather.current.uvi;
     var icon = weather.current.weather[0].icon;
-    var iconUrl = "http://openweathermap.org/img/wn/" + icon + "@4x.png";
+    var iconUrl = "https://openweathermap.org/img/wn/" + icon + "@4x.png";
     var windspeed = weather.current.wind_speed;
     var description = weather.current.weather[0].description;
     temperatureEl.innerHTML = temp + "&#xb0 F";
@@ -115,7 +115,7 @@ function fiveDayDateInfo(dailyInfo) {
             var dayHumidity = htmlDay.querySelector(".day-humidity");
             var dayIcon = htmlDay.querySelector(".icon-picture");
             var icon = day.weather[0].icon;
-            var iconUrl = "http://openweathermap.org/img/wn/" + icon + "@2x.png";
+            var iconUrl = "https://openweathermap.org/img/wn/" + icon + "@2x.png";
             dayName.innerHTML = new Date(day.dt * 1000).toLocaleDateString('en-us', { weekday: "long" });
             dayWind.innerHTML = "Wind Speed: " + day.wind_speed + " mp/h";
             dayUvIndex.innerHTML = "UV Index: " + day.uvi;
